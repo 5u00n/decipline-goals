@@ -6,13 +6,43 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "export:web": "expo export -p web",
+    "build:web": "expo export -p web && npx workbox-cli generateSW workbox-config.js"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^7.15.10",
+    "@react-navigation/native": "^7.2.2",
+    "@react-navigation/native-stack": "^7.14.12",
+    "babel-preset-expo": "~54.0.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.4.2",
     "expo": "~54.0.33",
+    "expo-auth-session": "~7.0.11",
+    "expo-constants": "~18.0.13",
+    "expo-crypto": "~15.0.9",
+    "expo-linking": "~8.0.12",
     "expo-status-bar": "~3.0.9",
+    "expo-web-browser": "~15.0.11",
+    "firebase": "^12.12.1",
+    "nativewind": "^4.2.3",
     "react": "19.1.0",
-    "react-native": "0.81.5"
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "^0.21.0",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^3.4.17",
+    "zustand": "^5.0.12"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "tailwindcss-animate": "^1.0.7",
+    "workbox-cli": "^7.4.0"
+  }
 }

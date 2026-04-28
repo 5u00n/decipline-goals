@@ -1,0 +1,6 @@
+{"sessionId":"1eda37","location":"HomeView.jsx:_bootstrap","message":"template after load","data":{"activeTemplateId":"phase2","sectionCount":3,"taskCount":10,"hasTitle":true},"hypothesisId":"H2","timestamp":1777323017127}
+{"sessionId":"1eda37","location":"HomeView.jsx:_bootstrap","message":"template after load","data":{"activeTemplateId":"simple_daily","sectionCount":1,"taskCount":5,"hasTitle":true},"hypothesisId":"H2","timestamp":1777323017130}
+{"sessionId":"1eda37","location":"HomeView.jsx:_subDay:tasks:first","message":"first RTDB tasks snapshot","data":{"dateKey":"2026-04-28","snapExists":true,"keyCount":5},"hypothesisId":"H3","timestamp":1777323017799}
+{"sessionId":"1eda37","location":"HomeView.jsx:_subDay:tasks:first","message":"first RTDB tasks snapshot","data":{"dateKey":"2026-04-28","snapExists":true,"keyCount":5},"hypothesisId":"H3","timestamp":1777323018530}
+{"sessionId":"1eda37","runId":"post-fix-stackroot","location":"HomeView.jsx:mainScroll.onLayout","message":"home vertical ScrollView size","data":{"width":1325,"height":654},"hypothesisId":"H1","timestamp":1777339455757}
+{"sessionId":"1eda37","runId":"post-fix-stackroot","location":"HomeView.jsx:mainScroll.onLayout","message":"home vertical ScrollView size","data":{"width":1189,"height":636},"hypothesisId":"H1","timestamp":1777339786556}

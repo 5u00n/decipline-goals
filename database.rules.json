@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "config": {
+      "firstUserUid": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "goalLibrary": {
+      ".read": "auth != null",
+      ".write": "root.child('users').child(auth.uid).child('profile').child('role').val() == 'admin'"
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid == $uid || root.child('users').child(auth.uid).child('profile').child('role').val() == 'admin')",
+        ".write": "auth != null && (auth.uid == $uid || root.child('users').child(auth.uid).child('profile').child('role').val() == 'admin')"
+      }
+    }
+  }
+}

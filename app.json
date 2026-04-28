@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "decipline-goals",
+    "name": "Discipline Goals",
     "slug": "decipline-goals",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "scheme": "decipline-goals",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -23,7 +24,18 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "name": "Discipline Goals",
+      "shortName": "Goals",
+      "description": "Daily goals, discipline, and wellness tracking.",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#18181b",
+      "display": "standalone",
+      "startUrl": "/",
+      "lang": "en",
+      "output": "single"
+    },
+    "plugins": ["expo-web-browser"]
   }
 }

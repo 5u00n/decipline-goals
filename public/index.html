@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <title>Discipline Goals</title>
+    <style>
+      /* Ensures the root is filled before JS loads. */
+      html, body, #root { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if (typeof process !== "undefined" && process.env) {
+        // No-op: Metro web injects the bundle after this file is merged in export.
+      }
+    </script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/sw.js", { scope: "/" })
+            .then(function (r) {
+              if (r && r.scope) {
+                /* eslint-disable */ console.log("Service worker registered:", r.scope);
+              }
+            })
+            .catch(function (e) {
+              console.error("Service worker registration failed", e);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

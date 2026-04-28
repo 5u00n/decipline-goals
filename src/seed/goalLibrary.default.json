@@ -1,0 +1,160 @@
+{
+  "templates": {
+    "phase1": {
+      "id": "phase1",
+      "title": "Phase 1: Foundation (weeks 1–4)",
+      "description": "Routine, simple Indian diet, skin basics, light movement.",
+      "sections": [
+        {
+          "id": "routine_morning",
+          "title": "Morning (before school, 15–20 min)",
+          "slot": "morning",
+          "tasks": [
+            { "id": "p1_rm_1", "label": "Light stretching + activation", "category": "exercise" },
+            { "id": "p1_rm_2", "label": "10 squats", "category": "exercise" },
+            { "id": "p1_rm_3", "label": "10 wall push-ups", "category": "exercise" },
+            { "id": "p1_rm_4", "label": "20-sec plank × 2", "category": "exercise" },
+            { "id": "p1_rm_5", "label": "10 glute bridges", "category": "exercise" }
+          ]
+        },
+        {
+          "id": "routine_evening",
+          "title": "Evening (after 5–6 pm, 20–25 min)",
+          "slot": "evening",
+          "tasks": [
+            { "id": "p1_re_1", "label": "Brisk walking OR skipping (10 min)", "category": "exercise" },
+            { "id": "p1_re_2", "label": "Squats × 12 × 2", "category": "exercise" },
+            { "id": "p1_re_3", "label": "Knee push-ups × 8 × 2", "category": "exercise" },
+            { "id": "p1_re_4", "label": "Plank × 20 sec × 3", "category": "exercise" },
+            { "id": "p1_re_5", "label": "Superman hold × 15 sec × 2", "category": "exercise" }
+          ]
+        },
+        {
+          "id": "diet_day",
+          "title": "Diet (simple Indian routine)",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p1_d_1", "label": "Warm water + soaked almonds (5–6) before school", "category": "diet" },
+            { "id": "p1_d_2", "label": "Breakfast: eggs / paneer / oats / poha", "category": "diet" },
+            { "id": "p1_d_3", "label": "Lunch: roti + dal + sabzi + protein (paneer/egg/chicken)", "category": "diet" },
+            { "id": "p1_d_4", "label": "Evening snack: fruit + peanuts / chana", "category": "diet" },
+            { "id": "p1_d_5", "label": "Dinner (light): roti + sabzi + protein", "category": "diet" },
+            { "id": "p1_d_6", "label": "Protein in every main meal (today)", "category": "diet" }
+          ]
+        },
+        {
+          "id": "water",
+          "title": "Water",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p1_w_1", "label": "2–3 liters water today", "category": "water" }
+          ]
+        },
+        {
+          "id": "skin",
+          "title": "Skin basics",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p1_s_1", "label": "Sunscreen daily (even indoors)", "category": "skin" },
+            { "id": "p1_s_2", "label": "Moisturizer after bath", "category": "skin" },
+            { "id": "p1_s_3", "label": "Niacinamide or vitamin C for dark patches (as suitable)", "category": "skin" }
+          ]
+        },
+        {
+          "id": "work_or_study",
+          "title": "Work / school focus",
+          "slot": "day",
+          "tasks": [
+            { "id": "p1_wo_1", "label": "Any work or school goals you set today", "category": "work" }
+          ]
+        }
+      ]
+    },
+    "phase2": {
+      "id": "phase2",
+      "title": "Phase 2: Medium (weeks 5–12)",
+      "description": "Toning & lifting: 30–40 min, 5 days/week; diet upgrade; skin improvement.",
+      "sections": [
+        {
+          "id": "p2_workout",
+          "title": "Workout (30–40 min) — day split",
+          "slot": "evening",
+          "tasks": [
+            { "id": "p2_1", "label": "Day 1 & 4: upper body (chest focus) — incline push-ups, chest press, arm circles, plank", "category": "exercise" },
+            { "id": "p2_2", "label": "Day 2 & 5: lower body — squats, lunges, glute bridges, donkey kicks", "category": "exercise" },
+            { "id": "p2_3", "label": "Day 3: core — leg raises, bicycle crunch, plank variations", "category": "exercise" },
+            { "id": "p2_4", "label": "Posture: stand straight in short breaks", "category": "exercise" }
+          ]
+        },
+        {
+          "id": "p2_diet",
+          "title": "Diet upgrade",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p2_d_1", "label": "High protein: eggs / paneer / curd / dal / chicken (as you eat non-veg)", "category": "diet" },
+            { "id": "p2_d_2", "label": "Seeds: flax, sunflower", "category": "diet" },
+            { "id": "p2_d_3", "label": "Fruits: e.g. papaya, orange (for skin support)", "category": "diet" },
+            { "id": "p2_w_1", "label": "2–3 liters water", "category": "water" }
+          ]
+        },
+        {
+          "id": "p2_skin",
+          "title": "Skin",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p2_s_1", "label": "Gentle exfoliation 1–2× this week (when scheduled today)", "category": "skin" },
+            { "id": "p2_s_2", "label": "Aloe vera gel at night (when scheduled)", "category": "skin" }
+          ]
+        }
+      ]
+    },
+    "phase3": {
+      "id": "phase3",
+      "title": "Phase 3: Long-term maintenance",
+      "description": "Best physique maintenance: weekly split, key habits, honest expectations.",
+      "sections": [
+        {
+          "id": "p3_weekly",
+          "title": "Weekly plan (reference)",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p3_1", "label": "4 days strength (per your split this week)", "category": "exercise" },
+            { "id": "p3_2", "label": "2 days light cardio or yoga", "category": "exercise" },
+            { "id": "p3_3", "label": "1 rest day", "category": "exercise" }
+          ]
+        },
+        {
+          "id": "p3_habits",
+          "title": "Key habits",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "p3_h_1", "label": "Sleep 7–8 hours (track tonight’s wind-down)", "category": "other" },
+            { "id": "p3_h_2", "label": "Posture: stand straight (brief checks today)", "category": "exercise" },
+            { "id": "p3_h_3", "label": "Supportive fit (e.g. bra) as part of your routine", "category": "other" },
+            { "id": "p3_d_1", "label": "Adequate protein + balanced meals (no crash dieting if not overweight)", "category": "diet" },
+            { "id": "p3_w_1", "label": "2–3 liters water", "category": "water" }
+          ]
+        }
+      ]
+    },
+    "simple_daily": {
+      "id": "simple_daily",
+      "title": "Simple daily version (final goal routine)",
+      "description": "Compact checklist you can use any day.",
+      "sections": [
+        {
+          "id": "sd_main",
+          "title": "Today",
+          "slot": "all_day",
+          "tasks": [
+            { "id": "sd_1", "label": "~30 min movement / workout", "category": "exercise" },
+            { "id": "sd_2", "label": "Protein in every meal", "category": "diet" },
+            { "id": "sd_3", "label": "Water 2–3 L + sleep 7–8h plan", "category": "water" },
+            { "id": "sd_4", "label": "Basic skincare (your minimal routine today)", "category": "skin" },
+            { "id": "sd_5", "label": "Work / life tasks you set for today", "category": "work" }
+          ]
+        }
+      ]
+    }
+  }
+}

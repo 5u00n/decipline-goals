@@ -249,16 +249,48 @@ export class GoalService {
    * @param {string} dateKey
    * @param {string} taskId
    * @param {boolean} done
+   * @param {{ activeTemplateId?: string, labelHint?: string }} [ctx] Used when the task row is missing (e.g. day was created under another template).
    */
-  async setTaskDone(uid, dateKey, taskId, done) {
+  async setTaskDone(uid, dateKey, taskId, done, ctx = {}) {
+    const { activeTemplateId, labelHint } = ctx;
     const p = `users/${uid}/daily/${dateKey}/tasks/${taskId}`;
     const s = await get(ref(this.db, p));
-    if (!s.exists()) {
-      return;
-    }
     const now = Date.now();
-    const patch = { done, doneAt: done ? now : null };
-    await update(ref(this.db, p), patch);
+
+    if (!s.exists()) {
+      let label =
+        typeof labelHint === 'string' && labelHint.trim().length > 0
+          ? labelHint.trim()
+          : taskId;
+      let category = 'other';
+      let sourceTemplateId = 'unknown';
+
+      if (typeof taskId === 'string' && taskId.startsWith('custom_')) {
+        sourceTemplateId = 'custom';
+      } else if (activeTemplateId) {
+        sourceTemplateId = activeTemplateId;
+        const t = await this.getTemplateById(activeTemplateId, uid);
+        const found = t
+          ? this.flattenTemplate(t).find((x) => x.id === taskId)
+          : null;
+        if (found) {
+          label = found.label;
+          category = found.category ?? 'other';
+        }
+      }
+
+      await set(ref(this.db, p), {
+        done,
+        doneAt: done ? now : null,
+        sourceTemplateId,
+        label,
+        category,
+      });
+    } else {
+      const patch = { done, doneAt: done ? now : null };
+      await update(ref(this.db, p), patch);
+    }
+
     await this.recomputeDaySummary(uid, dateKey);
   }
 

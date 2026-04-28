@@ -12,6 +12,9 @@ const config = {
   ...appJson.expo,
   extra: {
     ...(appJson.expo.extra ?? {}),
+    eas: {
+      projectId: 'dbaef791-7cc5-4185-bae5-a7c18d019364',
+    },
     firebase: {
       apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY ?? '',
       authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN ?? '',

@@ -1,6 +1,50 @@
-{"sessionId":"1eda37","location":"HomeView.jsx:_bootstrap","message":"template after load","data":{"activeTemplateId":"phase2","sectionCount":3,"taskCount":10,"hasTitle":true},"hypothesisId":"H2","timestamp":1777323017127}
-{"sessionId":"1eda37","location":"HomeView.jsx:_bootstrap","message":"template after load","data":{"activeTemplateId":"simple_daily","sectionCount":1,"taskCount":5,"hasTitle":true},"hypothesisId":"H2","timestamp":1777323017130}
-{"sessionId":"1eda37","location":"HomeView.jsx:_subDay:tasks:first","message":"first RTDB tasks snapshot","data":{"dateKey":"2026-04-28","snapExists":true,"keyCount":5},"hypothesisId":"H3","timestamp":1777323017799}
-{"sessionId":"1eda37","location":"HomeView.jsx:_subDay:tasks:first","message":"first RTDB tasks snapshot","data":{"dateKey":"2026-04-28","snapExists":true,"keyCount":5},"hypothesisId":"H3","timestamp":1777323018530}
-{"sessionId":"1eda37","runId":"post-fix-stackroot","location":"HomeView.jsx:mainScroll.onLayout","message":"home vertical ScrollView size","data":{"width":1325,"height":654},"hypothesisId":"H1","timestamp":1777339455757}
-{"sessionId":"1eda37","runId":"post-fix-stackroot","location":"HomeView.jsx:mainScroll.onLayout","message":"home vertical ScrollView size","data":{"width":1189,"height":636},"hypothesisId":"H1","timestamp":1777339786556}
+{"sessionId":"1eda37","hypothesisId":"H4","location":"ContributionActivity.jsx:ScrollView.onLayout","message":"contrib h-scroll layout","data":{"width":1247,"height":105},"timestamp":1777347555757}
+{"sessionId":"1eda37","hypothesisId":"H4","location":"ContributionActivity.jsx:ScrollView.onLayout","message":"contrib h-scroll layout","data":{"width":1247,"height":105},"timestamp":1777347569597}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347579771}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":true,"hasUid":true},"timestamp":1777347579772,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347579956}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":true,"hasUid":true},"timestamp":1777347579957,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347580393}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_2","next":true,"hasUid":true},"timestamp":1777347580393,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347580929}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_2","next":true,"hasUid":true},"timestamp":1777347580930,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-upsert","location":"GoalService.js:setTaskDone","message":"wrote missing task row","data":{"taskId":"p1_rm_1","branch":"upsert"},"timestamp":1777347581020,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-upsert","location":"GoalService.js:setTaskDone","message":"wrote missing task row","data":{"taskId":"p1_rm_1","branch":"upsert"},"timestamp":1777347581198,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347581409}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347581592}
+{"sessionId":"1eda37","hypothesisId":"H6-upsert","location":"GoalService.js:setTaskDone","message":"wrote missing task row","data":{"taskId":"p1_rm_2","branch":"upsert"},"timestamp":1777347581639,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_2"},"timestamp":1777347582039}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":true},"timestamp":1777347582227}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":false,"hasUid":true},"timestamp":1777347582228,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-upsert","location":"GoalService.js:setTaskDone","message":"wrote missing task row","data":{"taskId":"p1_rm_2","branch":"upsert"},"timestamp":1777347582297,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347582686,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_2"},"timestamp":1777347582694}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":true},"timestamp":1777347582911}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_2","next":false,"hasUid":true},"timestamp":1777347582912,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347583075}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_2","branch":"patch"},"timestamp":1777347583417,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_2"},"timestamp":1777347583867}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347593508}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":true,"hasUid":true},"timestamp":1777347593509,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347593987,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":true},"timestamp":1777347594302}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":false,"hasUid":true},"timestamp":1777347594303,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347594376}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347594711,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347594855}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_2","next":true,"hasUid":true},"timestamp":1777347594855,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347595198}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_2","branch":"patch"},"timestamp":1777347595261,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":true},"timestamp":1777347595363}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_2","next":false,"hasUid":true},"timestamp":1777347595363,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_2"},"timestamp":1777347595649}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_2","branch":"patch"},"timestamp":1777347595864,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":false},"timestamp":1777347596121}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":true,"hasUid":true},"timestamp":1777347596122,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_2"},"timestamp":1777347596258}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347596570,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347596959}
+{"sessionId":"1eda37","hypothesisId":"H1","location":"CheckboxRow.jsx:onPress","message":"checkbox press","data":{"disabled":false,"done":true},"timestamp":1777347597677}
+{"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":false,"hasUid":true},"timestamp":1777347597678,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347598078,"runId":"post-fix"}
+{"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347598467}

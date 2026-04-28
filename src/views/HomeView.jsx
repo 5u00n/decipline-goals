@@ -181,13 +181,21 @@ export class HomeView extends Component {
     this._subDay(uid, newKey, db);
   };
 
-  onToggle = async (taskId, next) => {
+  /**
+   * @param {string} taskId
+   * @param {boolean} next
+   * @param {string} [labelHint] For RTDB upsert when the task row is missing under daily/…/tasks.
+   */
+  onToggle = async (taskId, next, labelHint) => {
     const uid = getAuth().currentUser?.uid;
     if (!uid) {
       return;
     }
-    const { dateKey } = this.state;
-    await goalService.setTaskDone(uid, dateKey, taskId, next);
+    const { dateKey, activeTemplateId } = this.state;
+    await goalService.setTaskDone(uid, dateKey, taskId, next, {
+      activeTemplateId,
+      labelHint,
+    });
   };
 
   onOpenPicker = () => this.setState({ showPicker: true });
@@ -616,7 +624,9 @@ export class HomeView extends Component {
                         label={st?.label ?? task.label}
                         done={done}
                         highlight={highlight}
-                        onToggle={(n) => this.onToggle(task.id, n)}
+                        onToggle={(n) =>
+                          this.onToggle(task.id, n, st?.label ?? task.label)
+                        }
                       />
                     );
                   })}
@@ -636,7 +646,9 @@ export class HomeView extends Component {
                       label={st?.label ?? taskId}
                       done={!!st?.done}
                       highlight={highlight}
-                      onToggle={(n) => this.onToggle(taskId, n)}
+                      onToggle={(n) =>
+                        this.onToggle(taskId, n, st?.label ?? '')
+                      }
                     />
                   </View>
                   <Pressable

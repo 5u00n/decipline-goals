@@ -8,10 +8,13 @@ This document explains **how data is stored**, **where reference templates live*
 
 ## Using the app
 
-Navigation is a single **Stack** — there are no bottom tabs. **Home** is the central hub for every user; **Analytics** and (admin-only) **Admin** are pages pushed from Home, each with a **Back** button that returns to Home.
+Navigation is a single **Stack** — there are no bottom tabs. **Home** is the central hub for every user; **Settings**, **Analytics**, and (admin-only) **Admin** are pages pushed from Home, each with a **Back** button that returns to Home.
 
-- **Home** (initial route): Header shows **Analytics**, **Admin** (admin only), and **Out** buttons. Below the day strip, a compact summary card surfaces 7-day **avg completion %**, **current streak** (consecutive fully-complete days back from today), and **full days** in the last 7 — tap it to push the full Analytics page. Use **Active plan** to pick a routine template from the catalog (merged defaults + optional `goalLibrary/templates` in RTDB). Scroll to the checklist and tick items for the selected day; the **day strip** is the last 7 local days with `completed/total` from `daySummaries`. Add **one-off tasks** for the selected day via **Quick add** or the floating **+** button (bottom sheet), which calls the same flow as before — tasks use `sourceTemplateId: 'custom'` and can be removed with **×**; the sheet also links to **Change routine (template)**.
-- **Analytics** (pushed from Home via the **Analytics** header button): Choose **7 / 30 / 90 days**, see average completion, **streak** (consecutive fully complete days in that window, counting back from today), **best 7-day** total completions, a **bar chart** of daily completion rate, a **week in review** line, **Reports by category**, and **Export CSV** for the selected range (download on web, share sheet on native). **Back** returns to Home.
+- **Home** (initial route): Header shows **Settings**, **Analytics**, **Admin** (admin only), and **Out**. Below the day strip, a compact summary card surfaces 7-day **avg completion %**, **current streak** (consecutive fully-complete days back from today), and **full days** in the last 7 — tap it to push the full Analytics page. Scroll to **Activity** (heatmap) and today’s checklist; the **day strip** is the last 7 local days with `completed/total` from `daySummaries`. Pick your **routine template** and manage **+ Add plan / todo / template** flows from **Settings** (see below). Add **one-off tasks** for the selected day via **Quick add** or the floating **+** button (bottom sheet); tasks use `sourceTemplateId: 'custom'` and can be removed with **×**; the sheet links to **Change routine (template)** (opens the picker on Home).
+
+- **Settings** (via **Settings** header on Home): **Active plan** (title, description, **Change**), **+ Add plan**, **+ Add todo** (one-offs for the day you opened Settings from Home), and **+ New plan template**. **Back** returns to Home.
+
+- **Analytics** (pushed from Home via **Analytics**): Choose **7 / 30 / 90 days**, see average completion, **streak** (consecutive fully complete days in that window, counting back from today), **best 7-day** total completions, a **bar chart** of daily completion rate, a **week in review** line, **Reports by category**, and **Export CSV** for the selected range (download on web, share sheet on native). **Back** returns to Home.
 - **Admin** (pushed from Home via the **Admin** header button, only if your account is an **admin**): See [Admin dashboard](#admin-dashboard) below.
 
 ---
@@ -22,7 +25,7 @@ The **Admin** area is for users with `users/{uid}/profile/role === 'admin'`. It 
 
 ### Who can open it
 
-- **Entry points:** If `users/{uid}/profile/role` is `admin`, an **Admin** button appears on **Home** between **Analytics** and **Out** (see **Account: admin** under the title). Tapping it pushes the [`AdminDashboardView`](src/views/AdminDashboardView.jsx) onto the stack from [`App.jsx`](src/App.jsx). Non-admins do not see the button at all.
+- **Entry points:** If `users/{uid}/profile/role` is `admin`, an **Admin** button appears on **Home** after **Settings** and **Analytics** (see **Account: admin** under the title). Tapping it pushes the [`AdminDashboardView`](src/views/AdminDashboardView.jsx) onto the stack from [`App.jsx`](src/App.jsx). Non-admins do not see the button at all.
 - **Guards:** If `role` is not `admin`, the dashboard navigates to **Home** on mount. If an admin is **demoted** while the screen is open, they are sent back to **Home**.
 
 ### If you do not see Admin
@@ -85,7 +88,7 @@ Below the overview, a **User analytics ({windowDays}d)** card shows system-wide 
 | **Firebase Realtime Database (RTDB)** | Single source of truth: profiles, settings, per-day tasks, day summaries, shared goal library, first-user config. |
 | **Class-based services** (`src/services/`) | Read/write RTDB; no React. `AuthService`, `GoalService`, `AdminService`, `RealtimeDatabaseService`. |
 | **Zustand** (`src/store/`) | `useAuthStore`: current `user`, `role`, readiness. `useGoalStore` is available for more UI state. Role is **mirrored** from RTDB and updated live via `onValue` in `App.jsx`. |
-| **Views** (class components) | `AuthView`, `HomeView`, `AnalyticsView`, `AdminDashboardView` — subscribe to data or receive props, call services, render lists. |
+| **Views** (class components) | `AuthView`, `HomeView`, `SettingsView`, `AnalyticsView`, `AdminDashboardView` — subscribe to data or receive props, call services, render lists. |
 | **UI** | NativeWind + `className` on RN primitives; tokens in `global.css` (same idea as shadcn: `--background`, `--primary`, etc.). Reusable pieces in `src/components/ui/`. |
 
 ---

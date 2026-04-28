@@ -14,6 +14,7 @@ import { AuthView } from './views/AuthView.jsx';
 import { HomeView } from './views/HomeView.jsx';
 import { AnalyticsView } from './views/AnalyticsView.jsx';
 import { AdminDashboardView } from './views/AdminDashboardView.jsx';
+import { SettingsView } from './views/SettingsView.jsx';
 import { Text } from './components/ui/Text.jsx';
 
 const Stack = createNativeStackNavigator();
@@ -129,9 +130,17 @@ function AppShell() {
             <HomeView
               onSignOut={onSignOut}
               role={role}
+              onOpenSettings={(dateKey) =>
+                navigation.navigate('Settings', { dateKey })
+              }
               onOpenAnalytics={() => navigation.navigate('Analytics')}
               onOpenAdmin={() => navigation.navigate('Admin')}
             />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="Settings">
+          {({ navigation, route }) => (
+            <SettingsView route={route} onBack={() => navigation.goBack()} />
           )}
         </Stack.Screen>
         <Stack.Screen name="Analytics">

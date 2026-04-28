@@ -39,24 +39,32 @@ const textVariants = cva('text-sm font-medium', {
  *  disabled?: boolean;
  *  variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link';
  *  className?: string;
+ *  compact?: boolean;
  * }} props
  */
-export function Button({ label, onPress, disabled, variant, className }) {
+export function Button({
+  label,
+  onPress,
+  disabled,
+  variant,
+  className,
+  compact,
+}) {
+  const v = variant ?? 'default';
   return (
     <Pressable
       accessibilityRole="button"
       disabled={!!disabled}
       onPress={onPress}
       className={cn(
-        buttonVariants({ variant: variant ?? 'default' }),
+        buttonVariants({ variant: v }),
+        compact && 'min-h-9 px-3 py-1.5',
         disabled && 'opacity-50',
         className
       )}
     >
       <Text
-        className={cn(
-          textVariants({ variant: variant ?? 'default' })
-        )}
+        className={cn(textVariants({ variant: v }), compact && 'text-xs')}
       >
         {label}
       </Text>

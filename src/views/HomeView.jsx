@@ -131,7 +131,36 @@ export class HomeView extends Component {
     await goalService.ensureDayForTemplate(uid, dk, active);
 
     this._subSummaries(uid, db);
+    this._subActiveTemplate(uid, db);
     this._subDay(uid, dk, db);
+  };
+
+  /**
+   * Keep Home in sync when active plan changes elsewhere (e.g. Settings screen).
+   */
+  _subActiveTemplate = (uid, db) => {
+    const u = onValue(
+      ref(db, `users/${uid}/settings/activeTemplateId`),
+      async (snap) => {
+        const raw = snap.exists() && snap.val() != null ? String(snap.val()) : '';
+        const id = raw || 'simple_daily';
+        let tpl = null;
+        try {
+          tpl = await goalService.getTemplateById(id, uid);
+        } catch {
+          return;
+        }
+        if (!tpl) {
+          return;
+        }
+        const prevId = this.state.activeTemplateId;
+        this.setState({ activeTemplateId: id, template: tpl });
+        if (id !== prevId) {
+          await goalService.ensureDayForTemplate(uid, this.state.dateKey, id);
+        }
+      },
+    );
+    this._unsubsAll.push(u);
   };
 
   _subSummaries = (uid, db) => {
@@ -348,7 +377,13 @@ export class HomeView extends Component {
       editorMode,
       editorInitial,
     } = this.state;
-    const { onSignOut, role, onOpenAdmin, onOpenAnalytics } = this.props;
+    const {
+      onSignOut,
+      role,
+      onOpenAdmin,
+      onOpenAnalytics,
+      onOpenSettings,
+    } = this.props;
 
     const days = lastNDaysFromKey(todayKey(), DAY_STRIP);
     const homeSummary = computeHomeSummary(this.state.summaries);
@@ -373,35 +408,59 @@ export class HomeView extends Component {
           style={{ flex: 1, minHeight: 0 }}
         >
         <View className="shrink-0 border-b border-border px-3 pb-2 pt-2">
-          <View className="mb-2 flex-row items-center justify-between">
-            <View className="shrink pr-1">
-              <Text className="text-lg font-semibold">Discipline Goals</Text>
-              <Text className="mt-0.5 text-xs text-muted-foreground">
-                Under the day strip: choose plan, add todo, then scroll for checklist.
+          <Text className="text-lg font-semibold text-foreground">
+            Discipline Goals
+          </Text>
+          <Text
+            className="mt-1 text-[11px] leading-snug text-muted-foreground"
+            numberOfLines={3}
+          >
+            Checklist &amp; Activity below — change routine and quick adds in{' '}
+            <Text className="font-medium text-foreground">Settings</Text>.
+          </Text>
+
+          {role ? (
+            <View className="mt-2">
+              <Text
+                className={`text-[11px] ${
+                  role === 'admin'
+                    ? 'font-medium text-primary'
+                    : 'text-muted-foreground'
+                }`}
+              >
+                {role === 'admin' ? 'Account · admin' : 'Account · user'}
               </Text>
-              {role ? (
-                <>
-                  <Text
-                    className={`mt-0.5 text-xs ${
-                      role === 'admin'
-                        ? 'font-medium text-primary'
-                        : 'text-muted-foreground'
-                    }`}
-                  >
-                    {role === 'admin' ? 'Account: admin' : 'Account: user'}
-                  </Text>
-                  {role === 'user' ? (
-                    <Text className="mt-0.5 text-xs text-muted-foreground">
-                      Admin tools are for organizer accounts. Ask an admin to promote you, or set
-                      your role in Firebase (see README).
-                    </Text>
-                  ) : null}
-                </>
+              {role === 'user' ? (
+                <Text
+                  className="mt-0.5 text-[10px] leading-snug text-muted-foreground"
+                  numberOfLines={3}
+                >
+                  Organizers see Admin tools. Ask one to promote you, or edit role in Firebase
+                  (README).
+                </Text>
               ) : null}
             </View>
-            <View className="flex-row gap-2">
+          ) : null}
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            className="mt-3"
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ alignItems: 'center', paddingBottom: 2 }}
+          >
+            <View className="flex-row items-center gap-2">
+              {onOpenSettings ? (
+                <Button
+                  compact
+                  label="Settings"
+                  variant="outline"
+                  onPress={() => onOpenSettings(dateKey)}
+                />
+              ) : null}
               {onOpenAnalytics ? (
                 <Button
+                  compact
                   label="Analytics"
                   variant="outline"
                   onPress={onOpenAnalytics}
@@ -409,14 +468,15 @@ export class HomeView extends Component {
               ) : null}
               {role === 'admin' && onOpenAdmin ? (
                 <Button
+                  compact
                   label="Admin"
                   variant="outline"
                   onPress={onOpenAdmin}
                 />
               ) : null}
-              <Button label="Out" variant="ghost" onPress={onSignOut} />
+              <Button compact label="Out" variant="ghost" onPress={onSignOut} />
             </View>
-          </View>
+          </ScrollView>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View className="flex-row gap-2 py-1">
               {days.map((k) => {
@@ -456,85 +516,6 @@ export class HomeView extends Component {
               })}
             </View>
           </ScrollView>
-
-          <Card className="mb-2 mt-2 border-border">
-            <View className="flex-row items-center justify-between">
-              <View className="min-w-0 flex-1 pr-2">
-                <Text className="text-xs uppercase text-muted-foreground">
-                  Active plan
-                </Text>
-                <Text className="mt-0.5 text-base font-semibold text-foreground">
-                  {template?.title ?? activeTemplateId}
-                </Text>
-                {template?.description ? (
-                  <Text
-                    className="mt-0.5 text-xs text-muted-foreground"
-                    numberOfLines={2}
-                  >
-                    {template.description}
-                  </Text>
-                ) : null}
-              </View>
-              <View className="flex-row flex-wrap justify-end gap-2">
-                {activeTemplateId &&
-                typeof activeTemplateId === 'string' &&
-                activeTemplateId.startsWith('personal_') ? (
-                  <>
-                    <Button
-                      label="Edit"
-                      variant="outline"
-                      onPress={() => this.onEditPersonalTemplate(activeTemplateId)}
-                    />
-                    <Button
-                      label="Delete"
-                      variant="outline"
-                      onPress={() => this.onDeletePersonalTemplate(activeTemplateId)}
-                    />
-                  </>
-                ) : null}
-                <Button
-                  label="Change"
-                  variant="outline"
-                  onPress={this.onOpenPicker}
-                />
-              </View>
-            </View>
-          </Card>
-
-          <Card className="mb-2 border-border">
-            <Text className="mb-2 text-xs uppercase text-muted-foreground">
-              Add
-            </Text>
-            <View className="flex-row flex-wrap gap-2">
-              <View className="min-w-[30%] flex-1">
-                <Button
-                  label="+ Add plan"
-                  onPress={this.onOpenPicker}
-                />
-                <Text className="mt-1 text-[10px] text-muted-foreground">
-                  Pick a routine template
-                </Text>
-              </View>
-              <View className="min-w-[30%] flex-1">
-                <Button
-                  label="+ Add todo"
-                  onPress={this.onOpenAddModal}
-                />
-                <Text className="mt-1 text-[10px] text-muted-foreground">
-                  One-off for {dayChipLabel(dateKey)}
-                </Text>
-              </View>
-              <View className="min-w-[30%] flex-1">
-                <Button
-                  label="+ New plan template"
-                  onPress={this.onCreatePersonalTemplate}
-                />
-                <Text className="mt-1 text-[10px] text-muted-foreground">
-                  Build your own template
-                </Text>
-              </View>
-            </View>
-          </Card>
         </View>
 
         <ScrollView

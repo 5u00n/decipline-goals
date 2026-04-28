@@ -32,6 +32,11 @@ export function contributionLevel(summary) {
   if (summary.allDone || done === total) {
     return 5;
   }
+  // Zero tasks checked but day had work planned → no green (not "lowest tier").
+  // Otherwise 0/total = 0% wrongly matched r <= 0.25 and showed faint green.
+  if (done === 0) {
+    return 0;
+  }
   const r = done / total;
   if (r <= 0.25) {
     return 1;

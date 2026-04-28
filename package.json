@@ -8,7 +8,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "export:web": "expo export -p web",
-    "build:web": "expo export -p web && npx workbox-cli generateSW workbox-config.js"
+    "build:web": "expo export -p web && npx workbox-cli generateSW workbox-config.js",
+    "build:android:play": "eas build --platform android --profile production",
+    "build:android:apk": "eas build --platform android --profile preview-apk",
+    "submit:android": "eas submit --platform android --profile production"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^7.15.10",
@@ -41,6 +44,7 @@
   },
   "private": true,
   "devDependencies": {
+    "eas-cli": "^16.28.0",
     "@babel/core": "^7.29.0",
     "tailwindcss-animate": "^1.0.7",
     "workbox-cli": "^7.4.0"

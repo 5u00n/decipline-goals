@@ -48,3 +48,4 @@
 {"sessionId":"1eda37","hypothesisId":"H2-H5","location":"HomeView.jsx:onToggle","message":"onToggle entry","data":{"taskId":"p1_rm_1","next":false,"hasUid":true},"timestamp":1777347597678,"runId":"post-fix"}
 {"sessionId":"1eda37","hypothesisId":"H6-patch","location":"GoalService.js:setTaskDone","message":"patched existing task row","data":{"taskId":"p1_rm_1","branch":"patch"},"timestamp":1777347598078,"runId":"post-fix"}
 {"sessionId":"1eda37","hypothesisId":"H3","location":"HomeView.jsx:onToggle","message":"setTaskDone ok","data":{"taskId":"p1_rm_1"},"timestamp":1777347598467}
+{"sessionId":"1eda37","hypothesisId":"H4","location":"ContributionActivity.jsx:ScrollView.onLayout","message":"contrib h-scroll layout","data":{"width":1111,"height":105},"timestamp":1777348220651}

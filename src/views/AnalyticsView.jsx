@@ -10,6 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAuth } from 'firebase/auth';
 import { get, onValue, ref } from 'firebase/database';
 import { getDatabaseInstance } from '../config/firebase.js';
+import { CompletionAreaLineChart } from '../components/charts/CompletionAreaLineChart.jsx';
 import { Card } from '../components/ui/Card.jsx';
 import { Text } from '../components/ui/Text.jsx';
 import { Button } from '../components/ui/Button.jsx';
@@ -376,8 +377,7 @@ export class AnalyticsView extends Component {
     const { categoryReports, loadingReports, exporting, exportError } =
       this.state;
 
-    const maxPct = 100;
-    const chartHeight = 96;
+    const chartHeight = 120;
 
     const { onBack } = this.props;
 
@@ -479,35 +479,10 @@ export class AnalyticsView extends Component {
 
           <Card className="mb-3">
             <Text className="mb-2 font-medium">Daily completion rate</Text>
-            <View
-              className="flex-row items-end gap-1"
-              style={{ height: chartHeight }}
-            >
-              {seriesPct.map((p) => {
-                const h = Math.max(
-                  2,
-                  Math.round((p.pct / maxPct) * chartHeight)
-                );
-                const full = p.total > 0 && p.done === p.total;
-                return (
-                  <View
-                    key={p.key}
-                    className="flex-1 items-center justify-end"
-                  >
-                    <View
-                      className={
-                        full
-                          ? 'w-full rounded-t bg-success'
-                          : p.pct > 0
-                            ? 'w-full rounded-t bg-primary'
-                            : 'w-full rounded-t bg-muted'
-                      }
-                      style={{ height: h }}
-                    />
-                  </View>
-                );
-              })}
-            </View>
+            <CompletionAreaLineChart
+              points={seriesPct}
+              height={chartHeight}
+            />
             <View className="mt-1 flex-row justify-between">
               <Text className="text-[10px] text-muted-foreground">
                 {keys[0] ? dayLabel(keys[0]) : ''}

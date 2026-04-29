@@ -6,7 +6,12 @@ import { onValue, ref } from 'firebase/database';
 import { getDatabaseInstance } from '../config/firebase.js';
 import { goalService } from '../services/GoalService.js';
 import { useGoalStore, todayKey } from '../store/goalStore.js';
-import { lastNDaysFromKey, toDateKey } from '../lib/dateKeys.js';
+import {
+  lastNDayKeysChronological,
+  lastNDaysFromKey,
+  toDateKey,
+} from '../lib/dateKeys.js';
+import { CompletionAreaLineChart } from '../components/charts/CompletionAreaLineChart.jsx';
 import { Card } from '../components/ui/Card.jsx';
 import { Text } from '../components/ui/Text.jsx';
 import { Button } from '../components/ui/Button.jsx';
@@ -18,6 +23,13 @@ import { PersonalTemplateEditorModal } from '../modals/PersonalTemplateEditorMod
 
 const DAY_STRIP = 7;
 const SUMMARY_WINDOW = 7;
+
+function pct(done, total) {
+  if (!total || total <= 0) {
+    return 0;
+  }
+  return Math.round((done / total) * 100);
+}
 
 /**
  * @param {string} key
@@ -387,6 +399,16 @@ export class HomeView extends Component {
 
     const days = lastNDaysFromKey(todayKey(), DAY_STRIP);
     const homeSummary = computeHomeSummary(this.state.summaries);
+    const keysChrono7 = lastNDayKeysChronological(
+      todayKey(),
+      SUMMARY_WINDOW
+    );
+    const homeSeriesPct = keysChrono7.map((k) => {
+      const s = summaries?.[k];
+      const total = s?.totalCount ?? 0;
+      const done = s?.completedCount ?? 0;
+      return { key: k, pct: pct(done, total) };
+    });
     const customEntries = dayTasks
       ? Object.entries(dayTasks).filter(([, v]) => this._isCustom(v))
       : [];
@@ -560,6 +582,24 @@ export class HomeView extends Component {
                   </Text>
                   <Text className="text-xs text-muted-foreground">
                     Full days
+                  </Text>
+                </View>
+              </View>
+              <View className="mt-4 border-t border-border pt-3">
+                <CompletionAreaLineChart
+                  points={homeSeriesPct}
+                  height={88}
+                />
+                <View className="mt-1 flex-row justify-between">
+                  <Text className="text-[10px] text-muted-foreground">
+                    {keysChrono7[0] ? dayChipLabel(keysChrono7[0]) : ''}
+                  </Text>
+                  <Text className="text-[10px] text-muted-foreground">
+                    {keysChrono7[keysChrono7.length - 1]
+                      ? dayChipLabel(
+                          keysChrono7[keysChrono7.length - 1]
+                        )
+                      : ''}
                   </Text>
                 </View>
               </View>

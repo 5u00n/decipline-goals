@@ -14,7 +14,7 @@ Navigation is a single **Stack** — there are no bottom tabs. **Home** is the c
 
 - **Settings** (via **Settings** header on Home): **Active plan** (title, description, **Change**), **+ Add plan**, **+ Add todo** (one-offs for the day you opened Settings from Home), and **+ New plan template**. **Back** returns to Home.
 
-- **Analytics** (pushed from Home via **Analytics**): Choose **7 / 30 / 90 days**, see average completion, **streak** (consecutive fully complete days in that window, counting back from today), **best 7-day** total completions, a **bar chart** of daily completion rate, a **week in review** line, **Reports by category**, and **Export CSV** for the selected range (download on web, share sheet on native). **Back** returns to Home.
+- **Analytics** (pushed from Home via **Analytics**): Choose **7 / 30 / 90 days**, see average completion, **streak** (consecutive fully complete days in that window, counting back from today), **best 7-day** total completions, an **area and line chart** of daily completion rate with datapoints, a **week in review** line, **Reports by category**, and **Export CSV** for the selected range (download on web, share sheet on native). **Back** returns to Home.
 - **Admin** (pushed from Home via the **Admin** header button, only if your account is an **admin**): See [Admin dashboard](#admin-dashboard) below.
 
 ---
